@@ -2,6 +2,7 @@ package io.turntabl.mds.dao;
 
 import io.turntabl.mds.model.ProductDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.CachePut;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -16,8 +17,9 @@ public class ProductDAO {
     @Autowired
     private RedisTemplate template;
 
+
     public ProductDTO save(ProductDTO productDTO) {
-        template.opsForHash().put(HASH_KEY, productDTO.getTICKER(), productDTO);
+        template.opsForHash().put(HASH_KEY, productDTO.TICKER(), productDTO);
         return productDTO;
     }
 

@@ -2,7 +2,9 @@ package io.turntabl.mds.event.listener;
 
 import io.turntabl.mds.event.GetOpenOrderBookEvent;
 import org.springframework.context.ApplicationListener;
+import org.springframework.stereotype.Component;
 
+@Component
 public class GetOpenOrderBookEventListener implements ApplicationListener<GetOpenOrderBookEvent> {
 
 

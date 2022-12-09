@@ -3,9 +3,11 @@ package io.turntabl.mds.event.listener;
 import io.turntabl.mds.event.GetOrderBookEvent;
 import io.turntabl.mds.model.OrderData;
 import org.springframework.context.ApplicationListener;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class GetOrderBookEventListener implements ApplicationListener<GetOrderBookEvent> {
 
     @Override
