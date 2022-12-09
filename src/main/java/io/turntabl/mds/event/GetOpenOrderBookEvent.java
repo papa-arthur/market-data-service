@@ -11,6 +11,7 @@ public class GetOpenOrderBookEvent extends ApplicationEvent {
     public GetOpenOrderBookEvent(MarketData data) {
         super(data);
         this.data = data;
+        System.out.println("GetOpenOrderBookEvent event created!");
     }
 
 

@@ -1,15 +1,19 @@
 package io.turntabl.mds.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import org.springframework.data.redis.core.RedisHash;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class Execution {
+import java.io.Serializable;
 
-    private String timeStamp;
-    private double price;
-    private int quantity;
-}
+
+public record Execution(
+        String timeStamp,
+        double price,
+        int quantity) implements Serializable {}
+
+
+
+/**
+ *     private String timeStamp;
+ *     private double price;
+ *     private int quantity;
+ */

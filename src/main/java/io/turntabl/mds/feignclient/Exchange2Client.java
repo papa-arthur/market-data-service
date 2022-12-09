@@ -13,5 +13,5 @@ import java.util.List;
 )
 public interface Exchange2Client {
     @GetMapping("/pd")
-    public List<ProductDTO> getProductData2();
+    public List<ProductDTO> getProductData();
 }

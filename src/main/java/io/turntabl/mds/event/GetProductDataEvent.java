@@ -13,8 +13,5 @@ public class GetProductDataEvent extends ApplicationEvent {
     public GetProductDataEvent(MarketData data) {
         super(data);
         this.data = data;
-
-        System.out.println("GetProductDataEvent created");
-        System.out.println(data);
     }
 }

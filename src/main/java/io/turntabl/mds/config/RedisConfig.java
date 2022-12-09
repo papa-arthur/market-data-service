@@ -7,7 +7,6 @@ import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.listener.ChannelTopic;
 import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
-import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
@@ -16,6 +15,13 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 public class RedisConfig {
 
     public static final String PRODUCT_DATA_TOPIC = "PRODUCT_DATA";
+    public static final String EX1_PRODUCT_DATA_HASH = "EX1_PRODUCT_DATA";
+    public static final String EX2_PRODUCT_DATA_HASH = "EX2_PRODUCT_DATA";
+
+    public static final String EX1_ORDERBOOK_HASH = "EX1_ORDERBOOK_HASH";
+    public static final String EX2_ORDERBOOK_HASH = "EX2_ORDERBOOK_HASH";
+
+
 
     @Bean
     public JedisConnectionFactory connectionFactory() {
@@ -27,7 +33,7 @@ public class RedisConfig {
 
     @Bean
     public ChannelTopic topic(){
-        return new ChannelTopic("PRODUCT_DATA");
+        return new ChannelTopic(PRODUCT_DATA_TOPIC);
     }
     @Bean
     public RedisTemplate<String, Object> template() {

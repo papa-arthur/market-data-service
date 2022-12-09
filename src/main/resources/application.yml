@@ -1,12 +1,6 @@
-#spring:
-#  redis:
-#    host: localhost
-#    password:
-#    port: 6379
-#    lettuce:
-#      shutdown-timeout: 30000
-#      pool:
-#        max-active: 30
-#        max-idle: 8
-#        min-idle: 0
-
+spring:
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest

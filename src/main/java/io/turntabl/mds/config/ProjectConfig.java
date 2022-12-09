@@ -8,8 +8,8 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 @Configuration
 public class ProjectConfig {
-    public static String EXVHANGE1_URL = "https://exchange.matraining.com";
-    public static String EXVHANGE2_URL = "https://exchange2.matraining.com";
+    public static String EXCHANGE1_URL = "https://exchange.matraining.com";
+    public static String EXCHANGE2_URL = "https://exchange2.matraining.com";
 
 //    @Bean
 //    public WebClient webClient(){

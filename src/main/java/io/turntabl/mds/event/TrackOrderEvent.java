@@ -7,10 +7,10 @@ import org.springframework.context.ApplicationEvent;
 
 @Getter
 @Setter
-public class GetOrderBookEvent extends ApplicationEvent {
+public class TrackOrderEvent extends ApplicationEvent {
 
     private MarketData data;
-    public GetOrderBookEvent(MarketData data) {
+    public TrackOrderEvent(MarketData data) {
         super(data);
         this.data = data;
 

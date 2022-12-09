@@ -1,5 +1,6 @@
 package io.turntabl.mds.controller;
 
+import io.turntabl.mds.config.RedisConfig;
 import io.turntabl.mds.model.ProductDTO;
 import io.turntabl.mds.dao.ProductDAO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ public class ProductController {
 
     public ProductDTO save(@RequestBody ProductDTO productDTO) {
         System.out.println(productDTO);
-        return dao.save(productDTO);
+        return dao.save("TEST_EXCHANGE_HASH",productDTO);
 
 
     }

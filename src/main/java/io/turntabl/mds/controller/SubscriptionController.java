@@ -1,6 +1,5 @@
 package io.turntabl.mds.controller;
 
-import io.turntabl.mds.event.GetOrderBookEvent;
 import io.turntabl.mds.event.GetOpenOrderBookEvent;
 import io.turntabl.mds.event.GetProductDataEvent;
 import io.turntabl.mds.model.MarketData;
@@ -22,11 +21,11 @@ public class SubscriptionController {
     @PostMapping("/md")
     public  boolean receiveData(@RequestBody MarketData data){
 
-        boolean result = template.opsForHash().hasKey("PLACED_ORDERS", "EXEC_ORDER_ID");
+        boolean result = true; //template.opsForHash().hasKey("PLACED_ORDERS", "EXEC_ORDER_ID");
 
         if (result){
 
-            publisher.publishEvent(new GetOrderBookEvent(data));
+//            publisher.publishEvent(new TrackOrderEvent(data));
 
         }
 
