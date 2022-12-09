@@ -1,6 +1,5 @@
 package io.turntabl.mds.event.listener;
 
-import io.turntabl.mds.config.ProjectConfig;
 import io.turntabl.mds.config.RedisConfig;
 import io.turntabl.mds.dao.ProductDAO;
 import io.turntabl.mds.event.GetProductDataEvent;
@@ -13,9 +12,11 @@ import org.springframework.context.event.EventListener;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.listener.ChannelTopic;
 import org.springframework.stereotype.Component;
-import org.springframework.web.reactive.function.client.WebClient;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Component
@@ -46,7 +47,7 @@ public class GetProductDataEventListener implements ApplicationListener<GetProdu
 
         //1. get ProductDTO Data from EXCHANGE1
         //2. save product data to redis data
-        //3. product data to PRODUCT_DATA topic
+        //3. publish data to PRODUCT_DATA topic
 
         if (exchange.equals("MAL1")) {
 
@@ -65,49 +66,9 @@ public class GetProductDataEventListener implements ApplicationListener<GetProdu
 
             productDAO.saveAll(RedisConfig.EX2_PRODUCT_DATA_HASH, productDataMap);
         }
+
         template.convertAndSend(topic.getTopic(), productDataMap);
 
     }
 
-//    private List<ProductDTO> getProductData(String baseUrl, String product) {
-//        return Arrays.stream(webClient.get()
-//                        .uri(baseUrl + "/pd/" + product)
-//                        .retrieve()
-//                        .bodyToMono(ProductDTO[].class)
-//                        .block())
-//                .toList();
-//    }
-
-
 }
-
-
-/**
- * if (exchange.equals("MAL1")) {
- * <p>
- * productDTODataList = feignclient1.getProductData();
- * <p>
- * var productDataMap = productDTODataList.stream()
- * .collect(Collectors.toMap(ProductDTO::TICKER, productDTO -> productDTO));
- * <p>
- * template.opsForHash().putAll("EXHANGE1_PD", productDataMap);
- * <p>
- * productDAO.saveAll("EXHANGE1_PD", productDataMap);
- * <p>
- * <p>
- * template.convertAndSend(topic.getTopic(), productDataMap);
- * <p>
- * } else {
- * <p>
- * //TODO: get ProductDTO Data from EXCHANGE1
- * productDTODataList = feignclient2.getProductData();
- * var productDataMap = productDTODataList.stream()
- * .collect(Collectors.toMap(ProductDTO::TICKER, productDTO -> productDTO));
- * <p>
- * template.opsForHash().putAll("EXHANGE2_PD", productDataMap);
- * <p>
- * //TODO publish to PRODUCT_DATA topic (pub/sud)
- * <p>
- * template.convertAndSend("PRODUCT_DATA", productDataMap.toString());
- * }
- */

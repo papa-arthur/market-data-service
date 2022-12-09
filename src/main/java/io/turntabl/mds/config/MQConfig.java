@@ -5,28 +5,24 @@ import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class MQConfig {
-    @Value(value = "${spring.messaging.exchange}")
     public static String ORDER_EXCHANGE = "order.exchange";
     public static String TRACKING_QUEUE = "order.tracking.queue";
     public static String TRACKING_ROUTING_KEY = "order.tracking.key";
 
 
-
     @Bean
-    public Queue orderTrackingQueue() {
+    public Queue trackingQueue() {
         return new Queue(TRACKING_QUEUE);
     }
 
-
     @Bean
-    public Binding orderTrackingBinding() {
-        return BindingBuilder.bind(orderTrackingQueue())
+    public Binding binding() {
+        return BindingBuilder.bind(trackingQueue())
                 .to(topicExchange())
                 .with(TRACKING_ROUTING_KEY);
     }
@@ -47,6 +43,7 @@ public class MQConfig {
         template.setConnectionFactory(connectionFactory);
         template.setMessageConverter(converter());
         return template;
+
     }
 
 }

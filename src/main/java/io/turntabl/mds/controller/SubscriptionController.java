@@ -2,6 +2,7 @@ package io.turntabl.mds.controller;
 
 import io.turntabl.mds.event.GetOpenOrderBookEvent;
 import io.turntabl.mds.event.GetProductDataEvent;
+import io.turntabl.mds.event.TrackOrderEvent;
 import io.turntabl.mds.model.MarketData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
@@ -25,7 +26,7 @@ public class SubscriptionController {
 
         if (result){
 
-//            publisher.publishEvent(new TrackOrderEvent(data));
+            publisher.publishEvent(new TrackOrderEvent(data));
 
         }
 
