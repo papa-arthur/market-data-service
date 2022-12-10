@@ -20,14 +20,18 @@ public class TrackOrderEventListener implements ApplicationListener<TrackOrderEv
     @Autowired
     QueueingService queueingService;
     private List<OrderData> orderBook = new ArrayList<>();
-    private  OrderData orderData;
+    private OrderData orderData;
 
     private Map<String, OrderData> orderBookMap = new HashMap<>();
+
     @Override
     @EventListener()
     public void onApplicationEvent(TrackOrderEvent event) {
         var marketData = event.getData();
-        queueingService.sendTrackingMessage(MQConfig.ORDER_EXCHANGE, MQConfig.TRACKING_ROUTING_KEY, marketData);
+        if (marketData.getCumQty() != 0) {
+            queueingService.sendTrackingMessage(MQConfig.ORDER_EXCHANGE, MQConfig.TRACKING_ROUTING_KEY, marketData);
+        }
+
 
     }
 

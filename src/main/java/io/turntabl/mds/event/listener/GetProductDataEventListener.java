@@ -1,7 +1,7 @@
 package io.turntabl.mds.event.listener;
 
 import io.turntabl.mds.config.RedisConfig;
-import io.turntabl.mds.event.listener.dao.ProductDAO;
+import io.turntabl.mds.dao.ProductDAO;
 import io.turntabl.mds.event.GetProductDataEvent;
 import io.turntabl.mds.feignclient.Exchange1Client;
 import io.turntabl.mds.feignclient.Exchange2Client;

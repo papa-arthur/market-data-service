@@ -1,4 +1,4 @@
-package io.turntabl.mds.event.listener.dao;
+package io.turntabl.mds.dao;
 
 import io.turntabl.mds.model.OrderData;
 import org.springframework.beans.factory.annotation.Autowired;

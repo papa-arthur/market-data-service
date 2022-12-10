@@ -1,7 +1,7 @@
 package io.turntabl.mds.controller;
 
 import io.turntabl.mds.model.ProductData;
-import io.turntabl.mds.event.listener.dao.ProductDAO;
+import io.turntabl.mds.dao.ProductDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
