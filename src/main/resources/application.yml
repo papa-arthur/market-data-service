@@ -1,3 +1,5 @@
+server:
+  port: 8081
 spring:
   profiles:
     active: dev
@@ -10,3 +12,18 @@ spring:
     port: 5672
     username: guest
     password: guest
+
+---
+spring:
+  profiles: prod
+  rabbitmq:
+    host: 3.145.30.125
+    port: 5672
+    username: guest
+    password: guest
+  redis:
+    config:
+      hostname: 3.145.30.125
+      port: 6379
+      password: TeamToukunya
+      topic: validations

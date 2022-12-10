@@ -2,7 +2,7 @@ package io.turntabl.mds.model;
 
 import java.io.Serializable;
 
-public record ProductDTO (
+public record ProductData(
         int SELL_LIMIT,
         double BID_PRICE,
         String TICKER,

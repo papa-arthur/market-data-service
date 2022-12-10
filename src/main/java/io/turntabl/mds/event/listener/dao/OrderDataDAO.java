@@ -1,11 +1,8 @@
-package io.turntabl.mds.dao;
+package io.turntabl.mds.event.listener.dao;
 
-import io.turntabl.mds.model.FullOrderBook;
 import io.turntabl.mds.model.OrderData;
-import io.turntabl.mds.model.ProductDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -21,12 +18,12 @@ public class OrderDataDAO {
 
 
 
-    @CachePut("#exchangeHash")
+    @CachePut("#ORDERBOOK_HASH")
     public void save(String exchangeHash, String product,  List<OrderData> orderBook) {
         template.opsForHash().put(exchangeHash,  product, orderBook);
     }
 
-    @CachePut("#exchangeHash")
+    @CachePut("#ORDERBOOK_HASH")
     public void saveAll(String exchangeHash, Map<String, List<OrderData>> map) {
         template.opsForHash().putAll(exchangeHash,map );
     }

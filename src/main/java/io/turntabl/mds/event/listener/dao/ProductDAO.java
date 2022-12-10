@@ -1,9 +1,8 @@
-package io.turntabl.mds.dao;
+package io.turntabl.mds.event.listener.dao;
 
-import io.turntabl.mds.model.ProductDTO;
+import io.turntabl.mds.model.ProductData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CachePut;
-import org.springframework.data.redis.core.RedisHash;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -13,31 +12,31 @@ import java.util.Map;
 @Repository
 public class ProductDAO {
 
-    public static final String HASH_KEY = "ProductDTO";
+    public static final String HASH_KEY = "ProductData";
 
     @Autowired
     private RedisTemplate template;
 
 
-    @CachePut("#exchangeHash")
-    public ProductDTO save(String exchangeHash, ProductDTO productDTO) {
-        template.opsForHash().put(exchangeHash, productDTO.TICKER(), productDTO);
-        return productDTO;
+    @CachePut("#PRODUCT_DATA_HASH")
+    public ProductData save(String exchangeHash, ProductData productData) {
+        template.opsForHash().put(exchangeHash, productData.TICKER(), productData);
+        return productData;
     }
 
-    @CachePut("#hashKey")
-    public Map<String, ProductDTO> saveAll(String exchangeHash, Map<String, ProductDTO> map) {
+    @CachePut("#PRODUCT_DATA_HASH")
+    public Map<String, ProductData> saveAll(String exchangeHash, Map<String, ProductData> map) {
         template.opsForHash().putAll(exchangeHash,map );
         return map;
     }
 
-    public List<ProductDTO> findAll() {
+    public List<ProductData> findAll() {
         return template.opsForHash().values(HASH_KEY);
     }
 
-    public ProductDTO findProductById(int id) {
+    public ProductData findProductById(int id) {
         System.out.println("called findProductById() from DB");
-        return (ProductDTO) template.opsForHash().get(HASH_KEY, id);
+        return (ProductData) template.opsForHash().get(HASH_KEY, id);
     }
 
 

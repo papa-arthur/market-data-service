@@ -11,7 +11,7 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@RedisHash("ProductDTO")
+@RedisHash("ProductData")
 public class Product implements Serializable {
     @Id
     private int SELL_LIMIT;

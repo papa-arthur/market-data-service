@@ -1,8 +1,7 @@
 package io.turntabl.mds.controller;
 
-import io.turntabl.mds.config.RedisConfig;
-import io.turntabl.mds.model.ProductDTO;
-import io.turntabl.mds.dao.ProductDAO;
+import io.turntabl.mds.model.ProductData;
+import io.turntabl.mds.event.listener.dao.ProductDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.*;
@@ -17,21 +16,21 @@ public class ProductController {
 
     @PostMapping
 
-    public ProductDTO save(@RequestBody ProductDTO productDTO) {
-        System.out.println(productDTO);
-        return dao.save("TEST_EXCHANGE_HASH",productDTO);
+    public ProductData save(@RequestBody ProductData productData) {
+        System.out.println(productData);
+        return dao.save("TEST_EXCHANGE_HASH", productData);
 
 
     }
 
     @GetMapping
-    public List<ProductDTO> getAllProducts() {
+    public List<ProductData> getAllProducts() {
         return dao.findAll();
     }
 
     @GetMapping("/{id}")
-    @Cacheable(key = "#id",value = "ProductDTO")
-    public ProductDTO findProduct(@PathVariable int id) {
+    @Cacheable(key = "#id",value = "ProductData")
+    public ProductData findProduct(@PathVariable int id) {
         return dao.findProductById(id);
     }
 

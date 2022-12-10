@@ -2,7 +2,7 @@ package io.turntabl.mds.event.listener;
 
 import io.turntabl.mds.config.ProjectConfig;
 import io.turntabl.mds.config.RedisConfig;
-import io.turntabl.mds.dao.OrderDataDAO;
+import io.turntabl.mds.event.listener.dao.OrderDataDAO;
 import io.turntabl.mds.event.GetOpenOrderBookEvent;
 import io.turntabl.mds.model.OrderData;
 import org.springframework.beans.factory.annotation.Autowired;

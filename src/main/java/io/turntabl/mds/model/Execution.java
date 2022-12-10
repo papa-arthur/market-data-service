@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 
 public record Execution(
-        String timeStamp,
+        String timestamp,
         double price,
         int quantity) implements Serializable {}
 
