@@ -1,12 +1,12 @@
 package io.turntabl.mds.controller;
 
+import io.turntabl.mds.dao.ExecutedOrderIdDAO;
 import io.turntabl.mds.event.GetOpenOrderBookEvent;
 import io.turntabl.mds.event.GetProductDataEvent;
 import io.turntabl.mds.event.TrackOrderEvent;
 import io.turntabl.mds.model.MarketData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,18 +15,19 @@ import org.springframework.web.bind.annotation.RestController;
 public class SubscriptionController {
 
     @Autowired
-    RedisTemplate template;
+    ExecutedOrderIdDAO executedOrderIdDAO;
      @Autowired
     ApplicationEventPublisher publisher;
 
     @PostMapping("/md")
     public  boolean receiveData(@RequestBody MarketData data){
 
-        boolean result = true; //template.opsForHash().hasKey("PLACED_ORDERS", "EXEC_ORDER_ID");
+        boolean result =  executedOrderIdDAO.hasKey(  data.getOrderID());
 
         if (result){
 
             publisher.publishEvent(new TrackOrderEvent(data));
+            System.out.println(data.getOrderID());
 
         }
 

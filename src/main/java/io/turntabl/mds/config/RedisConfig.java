@@ -21,6 +21,8 @@ public class RedisConfig {
     public static final String EX1_ORDERBOOK_HASH = "EX1_ORDERBOOK_HASH";
     public static final String EX2_ORDERBOOK_HASH = "EX2_ORDERBOOK_HASH";
 
+    public static final String EXECUTED_ORDER_ID_LIST = "EXECUTED_ORDER_ID_LIST";
+
 
 
     @Bean
