@@ -1,6 +1,7 @@
 package io.turntabl.mds.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.turntabl.mds.service.StompDataRetrieval;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.client.WebClient;
@@ -17,6 +18,11 @@ public class ProjectConfig {
     @Bean
     public WebClient webClient(){
         return WebClient.create();
+    }
+
+    @Bean
+    public StompDataRetrieval stompDataRetrieval(){
+        return new StompDataRetrieval();
     }
 
 

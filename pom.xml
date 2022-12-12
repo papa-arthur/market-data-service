@@ -66,8 +66,45 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <version>3.0.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>stomp-websocket</artifactId>
+            <version>2.3.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>webjars-locator-core</artifactId>
+            <version>0.52</version>
+        </dependency>
+        <dependency>
+            <groupId>de.lancom.systems.stomp</groupId>
+            <artifactId>stomp-spring</artifactId>
+            <version>0.1.11</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+
+            <dependency>
+                <groupId>io.socket</groupId>
+                <artifactId>socket.io-server</artifactId>
+                <version>4.0.1</version>
+            </dependency>
+        <dependency>
+            <groupId>org.webjars.npm</groupId>
+            <artifactId>stomp-client</artifactId>
+            <version>0.8.1</version>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>
