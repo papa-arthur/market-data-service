@@ -31,8 +31,6 @@ public class TrackOrderEventListener implements ApplicationListener<TrackOrderEv
         if (marketData.getCumQty() != 0) {
             queueingService.sendTrackingMessage(MQConfig.ORDER_EXCHANGE, MQConfig.TRACKING_ROUTING_KEY, marketData);
         }
-
-
     }
 
     private List<OrderData> getOrders(String baseUrl, String product) {

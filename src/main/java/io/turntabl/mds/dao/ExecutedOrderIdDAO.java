@@ -16,11 +16,6 @@ public class ExecutedOrderIdDAO {
     RedisTemplate template;
 
     @Cacheable("#EXECUTED_ORDER_ID_LIST")
-    public void saveId(String executedOrderId) {
-        template.opsForHash().put(RedisConfig.EXECUTED_ORDER_ID_LIST, executedOrderId, executedOrderId);
-    }
-
-
     public boolean hasKey(String orderID) {
         return template.opsForHash().hasKey(RedisConfig.EXECUTED_ORDER_ID_LIST, orderID);
     }

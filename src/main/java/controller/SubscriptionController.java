@@ -1,4 +1,4 @@
-package io.turntabl.mds.controller;
+package controller;
 
 import io.turntabl.mds.dao.ExecutedOrderIdDAO;
 import io.turntabl.mds.event.GetOpenOrderBookEvent;

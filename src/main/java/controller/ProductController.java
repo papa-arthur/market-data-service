@@ -1,4 +1,4 @@
-package io.turntabl.mds.controller;
+package controller;
 
 import io.turntabl.mds.model.ProductData;
 import io.turntabl.mds.dao.ProductDAO;
