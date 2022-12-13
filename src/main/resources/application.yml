@@ -2,7 +2,7 @@ server:
   port: 8081
 spring:
   profiles:
-    active: dev
+    active: prod
 
 ---
 spring:
@@ -16,6 +16,12 @@ spring:
 ---
 spring:
   profiles: prod
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=tradingdb
+    driverClassName: org.postgresql.Driver
+    username: postgres
+    password: postgres
+
   rabbitmq:
     host: 3.145.30.125
     port: 5672
